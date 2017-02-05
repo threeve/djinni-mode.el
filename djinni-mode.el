@@ -5,6 +5,7 @@
 ;; Author: Jason Foreman <j@jafo.io>
 ;; Keywords: languages
 ;; Package-Requires: ((emacs "24.1"))
+;; Version: 0.1.0-beta
 
 ;;; Commentary:
 
@@ -77,6 +78,12 @@
   (setq-local indent-line-function #'djinni-mode:indent-line)
   (setq indent-tabs-mode nil)
 
+  ;; imenu - WIP
+  (setq imenu-generic-expression
+        '(("Enums" "^\\s-*\\([a-zA-Z_]*\\)\\s-*=\\s-*enum\\s-*{\\s-*$" 1)
+          ("Records" "^\\s-*\\([a-zA-Z_]*\\)\\s-*=\\s-*record\\s-*{\\s-*$" 1)
+          ("Interfaces" "^\\s-*\\([a-zA-Z_]*\\)\\s-*=\\s-*interface\\s-*\\(?:+[joc]\\s-*\\)*{\\s-*$" 1)))
+  
   (setq font-lock-defaults '(djinni-mode:font-lock-defaults)))
 
 ;;;###autoload
